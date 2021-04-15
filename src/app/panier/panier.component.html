@@ -1,0 +1,18 @@
+<h2>Panier</h2>
+
+<div *ngIf="panierElements$ | async as pe">
+  <div>
+    <i *ngIf="pe.length === 0">Votre panier est vide.</i>
+    <i *ngIf="pe.length === 1">Vous avez {{ pe.length }} article dans votre panier.</i>
+    <i *ngIf="pe.length > 1">Vous avez {{ pe.length }} articles dans votre panier.</i>
+  </div>
+
+  <ul *ngFor='let panierElement of pe'>
+    <li >Article {{ panierElement.ref }} : {{ panierElement.name }} - Prix : {{ panierElement.price }}</li>
+    <a (click)="delReference(panierElement.ref)" routerLink="/panier">Supprimer</a>
+  </ul>
+
+  <p>Total : <i>{{ totalPrice(pe) }}</i></p>
+</div>
+
+<a [routerLink]="['/catalogue']">Retourner au catalogue</a>
