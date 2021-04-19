@@ -20,6 +20,8 @@ export class FormulaireComponent implements OnInit {
   ville: string = "";
   codePostal: string = "";
   adresse: string = "";
+  password: string = "";
+  passwordConf: string = "";
 
   error: boolean = true;
 

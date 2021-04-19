@@ -14,12 +14,12 @@
 
   const JWT_SECRET = "makey1234567";
 
-  function addCorsHeaders (Response $response) : Response {
 
+  function addCorsHeaders (Response $response) : Response {
       $response =  $response
       ->withHeader("Access-Control-Allow-Origin", 'http://localhost')
       ->withHeader("Access-Control-Allow-Headers" ,'Content-Type, Authorization')
-      ->withHeader("Access-Control-Allow-Methods", 'GET, POST, PUT, PATCH, DELETE,OPTIONS')
+      ->withHeader("Access-Control-Allow-Methods", 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
       ->withHeader ("Access-Control-Expose-Headers" , "Authorization");
 
       return $response;
@@ -48,6 +48,7 @@
       }
   ];
 
+
   $app->post('/api/login', function (Request $request, Response $response, $args) {
       $issuedAt = time();
       $expirationTime = $issuedAt + 60;
@@ -63,8 +64,6 @@
       $response = $response->withHeader("Authorization", "Bearer {$token_jwt}");
       return $response;
   });
-
-
 
 
   $app->get('/api/catalogue', function (Request $request, Response $response, $args) {
@@ -91,6 +90,7 @@
       return $response;
   });
 
+
   $app->get('/hello/{name}', function (Request $request, Response $response, $args) {
       $array = [];
       $array ["nom"] = $args ['name'];
@@ -109,6 +109,5 @@
 
   // Chargement du Middleware
   $app->add(new Tuupola\Middleware\JwtAuthentication($options));
-  $app->run ();
 
-?>
+  $app->run ();
