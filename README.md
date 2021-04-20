@@ -5,7 +5,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## How to build it
 
 npm install -g @angular/cli
-
 npm install @ngxs/store
 
 ## Development server
