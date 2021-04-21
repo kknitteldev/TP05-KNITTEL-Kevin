@@ -19,7 +19,7 @@ import { PanierState } from '../shared/states/panier-state';
 import { BtnAddPanierComponent } from './btn-add-panier/btn-add-panier.component';
 import { DetailArticleComponent } from './detail-article/detail-article.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import {AuthGuardGuard } from './auth-guard.guard';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 const appRoutes: Routes = [
   // { path: '', component: HomeComponent },
