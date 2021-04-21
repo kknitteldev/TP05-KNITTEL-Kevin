@@ -51,7 +51,7 @@
 
   $app->post('/api/login', function (Request $request, Response $response, $args) {
       $issuedAt = time();
-      $expirationTime = $issuedAt + 60;
+      $expirationTime = $issuedAt + 1200; // 1200sec = 20min
       $payload = array(
           'userid' => "12345",
           'email' => "emmanuel.maurice@gmail.com",
@@ -68,9 +68,26 @@
 
   $app->get('/api/catalogue', function (Request $request, Response $response, $args) {
       $flux = '[
-          {"ref":"x1","titre":"linux","prix":10},
-          {"ref":"x2,","titre":"windows","prix":15},
-          {"ref":"x3","titre":"angular","prix":5}
+        {
+          ref: "Y2LWP95M",
+          name: "Linux",
+          price: 10
+        },
+        {
+          ref: "M75CEPTK",
+          name: "Windows",
+          price: 15
+        },
+        {
+          ref: "75FGMDCX",
+          name: "Angular",
+          price: 5
+        },
+        {
+          ref: "SX9BG46C",
+          name: "Talend",
+          price: 0
+        },
       ]';
 
       $response = $response

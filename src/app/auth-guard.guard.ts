@@ -13,9 +13,9 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): any {
-    
-    this.store.select(jwt => function(){ 
-      if(jwt!= null) 
+
+    this.store.select(jwt => function(){
+      if(jwt!= null)
         return true;
       else
         return false;});
