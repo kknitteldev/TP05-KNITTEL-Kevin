@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private httpClient : HttpClient ) { }
 
-  public login(login : string, password : string) :   Observable<any> {
+  public login(login : string, password : string): Observable<any> {
     let httpOptions = {
       headers :  new HttpHeaders ({'Content-Type':'application/json'})};
 
