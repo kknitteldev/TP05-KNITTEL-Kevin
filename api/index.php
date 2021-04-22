@@ -8,7 +8,7 @@
   use Tuupola\Middleware\HttpBasicAuthentication;
   use \Firebase\JWT\JWT;
 
-  require __DIR__ . '/../vendor/autoload.php';
+  require __DIR__ . '../vendor/autoload.php';
 
   $app = AppFactory::create();
 
