@@ -40,7 +40,7 @@ export class ConnexionComponent implements OnInit {
 
   login() {
     console.log (this.pseudo + " " + this.password);
-    this.userService.login(this.pseudo,this.password).subscribe (flux => console.log(flux));
+    let token = this.userService.login(this.pseudo,this.password).subscribe(flux => localStorage.setItem('id_token', flux));
   }
 }
 

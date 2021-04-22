@@ -8,16 +8,16 @@ import { Select, Store } from '@ngxs/store';
 })
 export class AuthGuardGuard implements CanActivate {
 
-  constructor(private store: Store,  private router: Router) { }
+  constructor(private store: Store, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): any {
 
-    this.store.select(jwt => function(){
-      if(jwt!= null)
-        return true;
-      else
-        return false;});
+
+    if (localStorage.getItem('id_token') != null)
+      return true;
+    else
+      return false;
   }
 }
