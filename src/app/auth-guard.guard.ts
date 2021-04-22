@@ -10,14 +10,7 @@ export class AuthGuardGuard implements CanActivate {
 
   constructor(private store: Store, private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): any {
-
-
-    if (localStorage.getItem('id_token') != null)
-      return true;
-    else
-      return false;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return true;
   }
 }

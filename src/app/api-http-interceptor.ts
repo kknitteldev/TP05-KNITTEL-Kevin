@@ -31,7 +31,6 @@ export class ApiHttpInterceptor implements HttpInterceptor {
           }
         }
 
-        // TODO : vérifier que error soit bien ici
         // (error: HttpErrorResponse) => {
         //   switch (error.status) {
         //     case 400:
