@@ -14,6 +14,6 @@ export class UserService {
     let httpOptions = {
       headers :  new HttpHeaders ({'Content-Type':'application/json'})};
 
-    return this.httpClient.post<any> ("https://tp05-knittel-kevin.herokuapp.com/api/login",{"login":login,"password":password}, httpOptions);
+    return this.httpClient.post<any> ("/api/login",{"login":login,"password":password}, httpOptions);
   }
 }
