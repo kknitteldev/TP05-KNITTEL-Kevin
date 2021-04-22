@@ -4,7 +4,7 @@
 
   <div class="form-grp">
     <input type="text" placeholder="Nom" [(ngModel)]="nom"/>
-    <label *ngIf = "!regEx1.test(nom)" class="incorrect-field">Champ invalide</label>
+    <label *ngIf="!regEx1.test(nom)" class="incorrect-field">Champ invalide</label>
   </div>
 
   <div class="form-grp">
@@ -13,18 +13,23 @@
   </div>
 
   <div class="form-grp">
+    <input type="text" placeholder="Adresse email" [(ngModel)]="email"/>
+    <label *ngIf="!regEx1.test(prenom)" class="incorrect-field">Champ invalide</label>
+  </div>
+
+  <div class="form-grp">
     <input placeholder="Adresse" [(ngModel)]="adresse"/>
-    <label *ngIf = "!regEx2.test(adresse)" class="incorrect-field">Champ invalide</label>
+    <label *ngIf="!regEx2.test(adresse)" class="incorrect-field">Champ invalide</label>
   </div>
 
   <div class="form-grp">
     <input type="number" placeholder="Code postal" [(ngModel)]="codePostal"/>
-    <label *ngIf = "!regEx3.test(codePostal)" class="incorrect-field">Champ invalide</label>
+    <label *ngIf="!regEx3.test(codePostal)" class="incorrect-field">Champ invalide</label>
   </div>
 
   <div class="form-grp">
     <input type="text" placeholder="Ville" [(ngModel)]="ville"/>
-    <label *ngIf = "!regEx1.test(ville)" class="incorrect-field">Champ invalide</label>
+    <label *ngIf="!regEx1.test(ville)" class="incorrect-field">Champ invalide</label>
   </div>
 
   <div class="form-grp">

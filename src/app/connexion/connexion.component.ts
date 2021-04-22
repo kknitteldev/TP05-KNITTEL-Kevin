@@ -42,6 +42,5 @@ export class ConnexionComponent implements OnInit {
     console.log (this.pseudo + " " + this.password);
     this.userService.login(this.pseudo,this.password).subscribe (flux => console.log(flux));
   }
-
 }
 
