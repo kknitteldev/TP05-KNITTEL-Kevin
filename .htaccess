@@ -1,3 +1,0 @@
-RewriteEngine on
-RewriteRule ^$ api/ [L]
-RewriteRule (.*) api/$1 [L]
