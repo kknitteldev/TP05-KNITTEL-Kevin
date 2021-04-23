@@ -17,6 +17,7 @@ export class FormulaireComponent implements OnInit {
 
   nom: string = "";
   prenom: string = "";
+  email: string = "";
   ville: string = "";
   codePostal: string = "";
   adresse: string = "";

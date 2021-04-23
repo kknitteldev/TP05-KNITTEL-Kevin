@@ -31,15 +31,14 @@ export class ApiHttpInterceptor implements HttpInterceptor {
           }
         }
 
-        // TODO : vérifier que error soit bien ici
-        (error: HttpErrorResponse) => {
-          switch (error.status) {
-            case 400:
-            case 401:
-          }
+        // (error: HttpErrorResponse) => {
+        //   switch (error.status) {
+        //     case 400:
+        //     case 401:
+        //   }
 
-          return of(null);
-        }
+        //   return of(null);
+        // }
       }));
   }
 }
