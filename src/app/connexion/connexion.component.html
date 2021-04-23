@@ -3,13 +3,8 @@
 <div>
 
   <div class="form-grp">
-    <input type="email" placeholder="Adresse email" [(ngModel)]="email" />
-    <label *ngIf="!regEx3.test(email)" class="incorrect-field">Champ invalide</label>
-  </div>
-
-  <div class="form-grp">
-    <input placeholder="Pseudo" [(ngModel)]="pseudo" />
-    <label *ngIf="!regEx1.test(pseudo)" class="incorrect-field">Champ invalide</label>
+    <input placeholder="Pseudo" [(ngModel)]="login" />
+    <label *ngIf="!regEx1.test(login)" class="incorrect-field">Champ invalide</label>
   </div>
 
   <div class="form-grp">
@@ -18,6 +13,6 @@
   </div>
 
   <!-- <button [disabled]="!regEx1.test(pseudo) && !regEx2.test(password) && !regEx3.test(email)" (click)="login(email, password)">Enregistrer</button> -->
-  <button [disabled]="!regEx1.test(pseudo) && !regEx2.test(password) && !regEx3.test(email)" (click)="login()">Enregistrer</button>
+  <button [disabled]="!regEx1.test(login) && !regEx2.test(password)" (click)="connect()">Enregistrer</button>
 
 </div>
