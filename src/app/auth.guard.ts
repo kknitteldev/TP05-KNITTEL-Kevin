@@ -6,7 +6,7 @@ import { Select, Store } from '@ngxs/store';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
 
   constructor(private store: Store, private router: Router) { }
 

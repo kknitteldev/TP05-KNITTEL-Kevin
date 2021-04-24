@@ -62,6 +62,8 @@
 
       $token_jwt = JWT::encode($payload,JWT_SECRET, "HS256");
       $response = $response->withHeader("Authorization", "Bearer {$token_jwt}");
+
+      addCorsHeaders($response);
       return $response;
   });
 
@@ -94,6 +96,8 @@
       ->withHeader("Content-Type", "application/json;charset=utf-8");
 
       $response->getBody()->write($flux);
+
+      addCorsHeaders($response);
       return $response;
   });
 
@@ -104,6 +108,8 @@
       $array ["prenom"] = "emmanuel";
 
       $response->getBody()->write(json_encode ($array));
+
+      addCorsHeaders($response);
       return $response;
   });
 
@@ -112,6 +118,8 @@
       $array = [];
       $array ["nom"] = $args ['name'];
       $response->getBody()->write(json_encode ($array));
+
+      addCorsHeaders($response);
       return $response;
   });
 
@@ -120,6 +128,8 @@
       $array = [];
       $array ["nom"] = $args ['name'];
       $response->getBody()->write(json_encode ($array));
+
+      addCorsHeaders($response);
       return $response;
   });
 

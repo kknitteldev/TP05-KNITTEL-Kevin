@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 
@@ -19,7 +19,8 @@ import { PanierState } from '../shared/states/panier-state';
 import { BtnAddPanierComponent } from './btn-add-panier/btn-add-panier.component';
 import { DetailArticleComponent } from './detail-article/detail-article.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import { AuthGuardGuard } from './auth-guard.guard';
+import { AuthGuard } from './auth.guard';
+import { ApiHttpInterceptor } from './api-http-interceptor';
 
 const appRoutes: Routes = [
   // { path: '', component: HomeComponent },
@@ -28,8 +29,8 @@ const appRoutes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   // { path: 'catalogue', component: CatalogueComponent},
   // { path: 'catalogue/:ref', component: DetailArticleComponent},
-  { path: 'catalogue', component: CatalogueComponent, canActivate: [AuthGuardGuard]},
-  { path: 'catalogue/:ref', component: DetailArticleComponent, canActivate: [AuthGuardGuard] },
+  { path: 'catalogue', component: CatalogueComponent, canActivate: [AuthGuard]},
+  { path: 'catalogue/:ref', component: DetailArticleComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent }
 ]
 
@@ -56,8 +57,9 @@ const appRoutes: Routes = [
     NgxsModule.forRoot([PanierState])
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true },
     ArticleService,
-    [AuthGuardGuard]
+    [AuthGuard]
   ],
   bootstrap: [AppComponent]
 })
