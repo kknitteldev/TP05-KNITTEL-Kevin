@@ -8,7 +8,7 @@
   use Tuupola\Middleware\HttpBasicAuthentication;
   use \Firebase\JWT\JWT;
 
-  require __DIR__ . '../vendor/autoload.php';
+  require __DIR__ . './../vendor/autoload.php';
 
   $app = AppFactory::create();
 
@@ -51,7 +51,7 @@
 
   $app->post('/api/login', function (Request $request, Response $response, $args) {
       $issuedAt = time();
-      $expirationTime = $issuedAt + 1200; // 1200sec = 20min
+      $expirationTime = $issuedAt + 60; // en secondes
       $payload = array(
           'userid' => "12345",
           'email' => "emmanuel.maurice@gmail.com",
