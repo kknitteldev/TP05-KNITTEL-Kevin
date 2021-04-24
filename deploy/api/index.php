@@ -61,6 +61,7 @@
       );
 
       $token_jwt = JWT::encode($payload,JWT_SECRET, "HS256");
+      $response = $response->withHeader("Authorization", "Bearer {$token_jwt}")->write(json_encode($token_jwt));
 
       return $response;
   });
