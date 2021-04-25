@@ -16,5 +16,7 @@ export class UserService {
     // return this.httpClient.post<any>("https://tp05-knittel-kevin.herokuapp.com/api/login", { "login": login, "password": password }, httpOptions);
   }
 
-  
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
