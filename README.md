@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 npm install -g @angular/cli
 npm install @ngxs/store
+composer install
+composer update
 
 ## Development server
 

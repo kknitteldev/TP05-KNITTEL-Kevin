@@ -9,6 +9,7 @@
   use \Firebase\JWT\JWT;
 
   require __DIR__ . './../vendor/autoload.php';
+  require_once __DIR__ . './bootstrap.php';
 
   $app = AppFactory::create();
 
@@ -69,36 +70,51 @@
 
 
   $app->get('/api/catalogue', function (Request $request, Response $response, $args) {
-      $flux = '[
-        {
-          ref: "Y2LWP95M",
-          name: "Linux",
-          price: 10
-        },
-        {
-          ref: "M75CEPTK",
-          name: "Windows",
-          price: 15
-        },
-        {
-          ref: "75FGMDCX",
-          name: "Angular",
-          price: 5
-        },
-        {
-          ref: "SX9BG46C",
-          name: "Talend",
-          price: 0
-        },
-      ]';
+      // $flux = '[
+      //   {
+      //     ref: "Y2LWP95M",
+      //     name: "Linux",
+      //     price: 10
+      //   },
+      //   {
+      //     ref: "M75CEPTK",
+      //     name: "Windows",
+      //     price: 15
+      //   },
+      //   {
+      //     ref: "75FGMDCX",
+      //     name: "Angular",
+      //     price: 5
+      //   },
+      //   {
+      //     ref: "SX9BG46C",
+      //     name: "Talend",
+      //     price: 0
+      //   },
+      // ]';
 
-      $response = $response
-      ->withHeader("Content-Type", "application/json;charset=utf-8");
+    global $entityManager;
 
-      $response->getBody()->write($flux);
+    $articlesRepository = $entityManager->getRepository('Articles');
+    $articles = $articlesRepository->findAll();
 
-      addCorsHeaders($response);
-      return $response;
+    $data = [];
+
+    foreach ($articles as $article) {
+      $elem = [];
+      $elem["ref"] = $article->getRef();
+      $elem["titre"] = $article->getTitre();
+      $elem["prix"] = $article->getPrix();
+
+      array_push($data, $elem);
+    }
+
+    $response = $response->withHeader("Content-Type", "application/json;charset=utf-8");
+
+    $response->getBody()->write(json_encode($data));
+
+    addCorsHeaders($response);
+    return $response;
   });
 
 
