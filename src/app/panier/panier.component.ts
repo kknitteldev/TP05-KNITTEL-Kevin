@@ -1,4 +1,4 @@
-import { RemoveArticle } from './../../shared/actions/panier.action';
+import { RemoveArticle } from '../../shared/actions/panier.action';
 import { Component, OnInit, Input } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';

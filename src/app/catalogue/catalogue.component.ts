@@ -14,7 +14,9 @@ import { Article } from 'src/shared/models/article';
 
 export class CatalogueComponent implements OnInit {
 
-  articles$!: Article[];
+  // articles$!: Article[];
+
+  apiArticles$!: Observable<any>;
 
   articleSubscription!: Subscription;
 
@@ -22,12 +24,19 @@ export class CatalogueComponent implements OnInit {
 
   constructor(private articleService: ArticleService) { }
 
+  // ngOnInit(): void {
+  //   this.articleSubscription = this.articleService.articleSubject.subscribe(
+  //     (articles: Article[]) => {
+  //       this.articles$! = articles;
+  //     }
+  //   );
+  //   this.articleService.emitArticleSubject();
+  // }
+
   ngOnInit(): void {
-    this.articleSubscription = this.articleService.articleSubject.subscribe(
-      (articles: Article[]) => {
-        this.articles$! = articles;
-      }
-    );
-    this.articleService.emitArticleSubject();
+
+    this.apiArticles$ = this.articleService.getArticles();
+
+
   }
 }

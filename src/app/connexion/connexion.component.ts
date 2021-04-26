@@ -1,4 +1,4 @@
-import { UserService } from './../service/user.service';
+import { UserService } from '../service/user.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { User } from 'src/shared/models/user';
