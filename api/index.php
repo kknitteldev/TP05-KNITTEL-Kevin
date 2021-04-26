@@ -15,12 +15,12 @@
   const JWT_SECRET = "makey1234567";
 
 
-  function addCorsHeaders (Response $response) : Response {
-      $response =  $response
+  function addCorsHeaders(Response $response): Response {
+      $response = $response
       ->withHeader("Access-Control-Allow-Origin", 'http://localhost')
-      ->withHeader("Access-Control-Allow-Headers" ,'Content-Type, Authorization')
+      ->withHeader("Access-Control-Allow-Headers", 'Content-Type, Authorization')
       ->withHeader("Access-Control-Allow-Methods", 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-      ->withHeader ("Access-Control-Expose-Headers" , "Authorization");
+      ->withHeader("Access-Control-Expose-Headers", "Authorization");
 
       return $response;
   }
