@@ -8,6 +8,7 @@ npm install -g @angular/cli
 npm install @ngxs/store
 composer install
 composer update
+composer require slim/slim "4.0"
 
 ## Development server
 
