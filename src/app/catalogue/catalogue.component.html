@@ -11,8 +11,4 @@
       [articlePrice]='article.price'
     ></app-article>
   </ul>
-
-  <div  *ngFor = "let o of apiArticles$ | async">
-    {{o.titre}} / {{o.prix}} - <button>Ajout Panier</button>
-</div>
 </div>

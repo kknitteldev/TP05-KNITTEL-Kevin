@@ -16,13 +16,9 @@ export class CatalogueComponent implements OnInit {
 
   // articles$!: Article[];
 
-  apiArticles$!: Observable<any>;
+  // articleSubscription!: Subscription;
 
-  articleSubscription!: Subscription;
-
-  searchText: string = "";
-
-  constructor(private articleService: ArticleService) { }
+  // searchText: string = "";
 
   // ngOnInit(): void {
   //   this.articleSubscription = this.articleService.articleSubject.subscribe(
@@ -33,10 +29,11 @@ export class CatalogueComponent implements OnInit {
   //   this.articleService.emitArticleSubject();
   // }
 
+  apiArticles$!: Observable<any>;
+
+  constructor(private articleService: ArticleService) { }
+
   ngOnInit(): void {
-
-    this.apiArticles$ = this.articleService.getArticles();
-
-
+    this.apiArticles = this.articleService.getArticles().subscribe();
   }
 }
