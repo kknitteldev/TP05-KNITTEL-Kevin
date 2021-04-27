@@ -35,6 +35,7 @@ export class ArticleService {
   ];
 
   public getArticles(): Observable<any> {
+    console.log(this.httpClient.get<any>(environment.baseUrl+'/api/catalogue'));
     return this.httpClient.get<any>(environment.baseUrl+'/api/catalogue');
   }
 
