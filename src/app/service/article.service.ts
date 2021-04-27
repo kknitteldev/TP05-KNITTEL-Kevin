@@ -41,7 +41,7 @@ export class ArticleService {
   // }
 
   public getArticles(): Observable<any> {
-    return this.httpClient.get<any>(environment.baseUrl);
+    return this.httpClient.get<any>(environment.baseUrl+'/api/catalogue');
   }
 
   emitArticleSubject() {
