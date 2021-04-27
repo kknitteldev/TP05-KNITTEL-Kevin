@@ -34,6 +34,8 @@ export class CatalogueComponent implements OnInit {
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
-    this.apiArticles$! = this.articleService.getArticles();
+    console.log("toto");
+    // this.apiArticles$! = this.articleService.getArticles();
+    this.articleService.getArticles().subscribe(result => { console.log(result); });
   }
 }

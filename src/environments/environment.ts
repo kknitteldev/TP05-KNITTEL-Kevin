@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://tp05-knittel-kevin.herokuapp.com/api/catalogue'
+  baseUrl: 'https://tp05-knittel-kevin.herokuapp.com'
 };
 
 /*

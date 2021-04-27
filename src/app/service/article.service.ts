@@ -34,13 +34,8 @@ export class ArticleService {
     },
   ];
 
-  // public getArticles(): Observable<any> {
-  //   console.log('GET ARTICLES');
-  //   console.log(this.httpClient.get<any>(environment.baseUrl));
-  //   return this.httpClient.get<any>(environment.baseUrl);
-  // }
-
   public getArticles(): Observable<any> {
+    console.log("zizi");
     return this.httpClient.get<any>(environment.baseUrl+'/api/catalogue');
   }
 

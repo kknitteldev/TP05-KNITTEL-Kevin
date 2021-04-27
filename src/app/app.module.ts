@@ -23,14 +23,14 @@ import { AuthGuard } from './auth.guard';
 import { ApiHttpInterceptor } from './api-http-interceptor';
 
 const appRoutes: Routes = [
-  // { path: '', component: HomeComponent },
   { path: '', component: CatalogueComponent },
+  // { path: '', component: HomeComponent },
   { path: 'formulaire', component: FormulaireComponent },
   { path: 'connexion', component: ConnexionComponent },
-  // { path: 'catalogue', component: CatalogueComponent},
-  // { path: 'catalogue/:ref', component: DetailArticleComponent},
-  { path: 'catalogue', component: CatalogueComponent, canActivate: [AuthGuard]},
-  { path: 'catalogue/:ref', component: DetailArticleComponent, canActivate: [AuthGuard] },
+  { path: 'catalogue', component: CatalogueComponent},
+  { path: 'catalogue/:ref', component: DetailArticleComponent},
+  // { path: 'catalogue', component: CatalogueComponent, canActivate: [AuthGuard]},
+  // { path: 'catalogue/:ref', component: DetailArticleComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent }
 ]
 
