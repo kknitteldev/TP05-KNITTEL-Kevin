@@ -14,12 +14,16 @@ import { Article } from 'src/shared/models/article';
 
 export class CatalogueComponent implements OnInit {
 
-  // articles$!: Article[];
+  articles$!: Article[];
 
-  // articleSubscription!: Subscription;
+  articleSubscription!: Subscription;
 
   searchText: string = "";
 
+
+  apiArticles$!: Observable<any>;
+
+  constructor(private articleService: ArticleService) { }
   // ngOnInit(): void {
   //   this.articleSubscription = this.articleService.articleSubject.subscribe(
   //     (articles: Article[]) => {
@@ -29,13 +33,18 @@ export class CatalogueComponent implements OnInit {
   //   this.articleService.emitArticleSubject();
   // }
 
-  apiArticles$!: Observable<any>;
-
-  constructor(private articleService: ArticleService) { }
-
   ngOnInit(): void {
-    console.log("toto");
-    // this.apiArticles$! = this.articleService.getArticles();
-    this.articleService.getArticles().subscribe(result => { console.log(result); });
+    this.articleSubscription = this.articleService.getArticles().subscribe(
+      (articles: Article[]) => {
+        this.articles$! = articles;
+      }
+    );
+    this.articleService.emitArticleSubject();
   }
+
+  // ngOnInit(): void {
+  //   console.log("toto");
+  //   // this.apiArticles$! = this.articleService.getArticles();
+  //   this.articleService.getArticles().subscribe(result => { console.log(result); });
+  // }
 }

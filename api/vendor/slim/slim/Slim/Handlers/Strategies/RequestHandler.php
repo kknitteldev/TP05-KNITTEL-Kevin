@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Slim Framework (https://slimframework.com)
  *
@@ -12,33 +11,20 @@ namespace Slim\Handlers\Strategies;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Interfaces\RequestHandlerInvocationStrategyInterface;
+use Slim\Interfaces\InvocationStrategyInterface;
 
 /**
- * PSR-15 RequestHandler invocation strategy
+ * Default route callback strategy with route parameters as an array of arguments.
  */
-class RequestHandler implements RequestHandlerInvocationStrategyInterface
+class RequestHandler implements InvocationStrategyInterface
 {
-    /**
-     * @var bool
-     */
-    protected $appendRouteArgumentsToRequestAttributes;
-
-    /**
-     * @param bool $appendRouteArgumentsToRequestAttributes
-     */
-    public function __construct(bool $appendRouteArgumentsToRequestAttributes = false)
-    {
-        $this->appendRouteArgumentsToRequestAttributes = $appendRouteArgumentsToRequestAttributes;
-    }
-
     /**
      * Invoke a route callable that implements RequestHandlerInterface
      *
      * @param callable               $callable
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
-     * @param array<mixed>           $routeArguments
+     * @param array                  $routeArguments
      *
      * @return ResponseInterface
      */
@@ -48,12 +34,6 @@ class RequestHandler implements RequestHandlerInvocationStrategyInterface
         ResponseInterface $response,
         array $routeArguments
     ): ResponseInterface {
-        if ($this->appendRouteArgumentsToRequestAttributes) {
-            foreach ($routeArguments as $k => $v) {
-                $request = $request->withAttribute($k, $v);
-            }
-        }
-
         return $callable($request);
     }
 }

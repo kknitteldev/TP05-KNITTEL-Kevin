@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Slim Framework (https://slimframework.com)
  *
@@ -142,7 +141,7 @@ interface RouteInterface
     /**
      * Prepare the route for use
      *
-     * @param string[] $arguments
+     * @param array $arguments
      * @return RouteInterface
      */
     public function prepare(array $arguments): RouteInterface;

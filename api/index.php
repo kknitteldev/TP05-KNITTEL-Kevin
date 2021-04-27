@@ -8,7 +8,7 @@
   use Tuupola\Middleware\HttpBasicAuthentication;
   use \Firebase\JWT\JWT;
 
-  require __DIR__ . './../vendor/autoload.php';
+  require __DIR__ . '/vendor/autoload.php';
   require_once __DIR__ . '/bootstrap.php';
 
   $app = AppFactory::create();
@@ -40,7 +40,8 @@
         "/hello",
         "/api/hello",
         "/api/login",
-        "/api/createUser"
+        "/api/createUser",
+        "/api/catalogue"
       ],
       "error" => function ($response, $arguments) {
           $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
@@ -103,8 +104,8 @@
     foreach ($articles as $article) {
       $elem = [];
       $elem["ref"] = $article->getRef();
-      $elem["titre"] = $article->getTitre();
-      $elem["prix"] = $article->getPrix();
+      $elem["titre"] = $article->getName();
+      $elem["prix"] = $article->getPrice();
 
       array_push($data, $elem);
     }

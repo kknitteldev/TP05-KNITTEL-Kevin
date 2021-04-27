@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Slim Framework (https://slimframework.com)
  *
@@ -11,17 +10,6 @@ declare(strict_types=1);
 namespace Slim;
 
 use Psr\Http\Message\ResponseInterface;
-
-use function connection_status;
-use function header;
-use function headers_sent;
-use function in_array;
-use function min;
-use function sprintf;
-use function strlen;
-use function strtolower;
-
-use const CONNECTION_NORMAL;
 
 class ResponseEmitter
 {
@@ -46,13 +34,17 @@ class ResponseEmitter
      */
     public function emit(ResponseInterface $response): void
     {
-        $isEmpty = $this->isResponseEmpty($response);
         if (headers_sent() === false) {
-            $this->emitStatusLine($response);
+            if ($this->isResponseEmpty($response)) {
+                $response = $response
+                    ->withoutHeader('Content-Type')
+                    ->withoutHeader('Content-Length');
+            }
             $this->emitHeaders($response);
+            $this->emitStatusLine($response);
         }
 
-        if (!$isEmpty) {
+        if (!$this->isResponseEmpty($response)) {
             $this->emitBody($response);
         }
     }
@@ -65,7 +57,7 @@ class ResponseEmitter
     private function emitHeaders(ResponseInterface $response): void
     {
         foreach ($response->getHeaders() as $name => $values) {
-            $first = strtolower($name) !== 'set-cookie';
+            $first = $name !== 'Set-Cookie';
             foreach ($values as $value) {
                 $header = sprintf('%s: %s', $name, $value);
                 header($header, $first);
@@ -137,14 +129,8 @@ class ResponseEmitter
      */
     public function isResponseEmpty(ResponseInterface $response): bool
     {
-        if (in_array($response->getStatusCode(), [204, 205, 304], true)) {
-            return true;
-        }
-        $stream = $response->getBody();
-        $seekable = $stream->isSeekable();
-        if ($seekable) {
-            $stream->rewind();
-        }
-        return $seekable ? $stream->read(1) === '' : $stream->eof();
+        $contents = (string) $response->getBody();
+
+        return !strlen($contents) || in_array($response->getStatusCode(), [204, 205, 304], true);
     }
 }
