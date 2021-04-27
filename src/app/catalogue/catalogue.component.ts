@@ -33,18 +33,16 @@ export class CatalogueComponent implements OnInit {
   //   this.articleService.emitArticleSubject();
   // }
 
-  ngOnInit(): void {
-    this.articleSubscription = this.articleService.getArticles().subscribe(
-      (articles: Article[]) => {
-        this.articles$! = articles;
-      }
-    );
-    this.articleService.emitArticleSubject();
-  }
-
   // ngOnInit(): void {
-  //   console.log("toto");
-  //   // this.apiArticles$! = this.articleService.getArticles();
-  //   this.articleService.getArticles().subscribe(result => { console.log(result); });
+  //   this.articleSubscription = this.articleService.getArticles().subscribe(
+  //     (articles: Article[]) => {
+  //       this.articles$! = articles;
+  //     }
+  //   );
+  //   this.articleService.emitArticleSubject();
   // }
+
+  ngOnInit(): void {
+    this.apiArticles$! = this.articleService.getArticles();
+  }
 }
