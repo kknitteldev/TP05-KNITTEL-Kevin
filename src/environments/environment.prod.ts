@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://tp05-knittel-kevin.herokuapp.com/api/catalogue'
 };
