@@ -12,7 +12,6 @@
     <label *ngIf="!regEx2.test(password)" class="incorrect-field">Champ invalide</label>
   </div>
 
-  <!-- <button [disabled]="!regEx1.test(pseudo) && !regEx2.test(password) && !regEx3.test(email)" (click)="login(email, password)">Enregistrer</button> -->
   <button [disabled]="!regEx1.test(login) && !regEx2.test(password)" (click)="connect()">Enregistrer</button>
 
 </div>

@@ -10,8 +10,6 @@ import { ArticleService } from '../service/article.service'
 
 export class DetailArticleComponent implements OnInit {
 
-  // name: string = "";
-  // price: number = 0;
   articleRef!: string;
   articleName!: string;
   articlePrice!: number;
