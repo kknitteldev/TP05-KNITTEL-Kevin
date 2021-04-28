@@ -9,7 +9,7 @@
 
   <ul *ngFor='let panierElement of pe'>
     <li >Article {{ panierElement.ref }} : {{ panierElement.name }} - Prix : {{ panierElement.price }}</li>
-    <a (click)="delReference(panierElement.ref)" routerLink="/panier">Supprimer</a>
+    <input type="button" (click)="delReference(panierElement.ref)" routerLink="/panier" value="Supprimer" />
   </ul>
 
   <p>Total : <i>{{ totalPrice(pe) }}</i></p>
